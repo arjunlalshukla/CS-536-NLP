@@ -1,0 +1,15 @@
+{
+  "name": "A3 HMM",
+  "endpoint": "boisestate/cs4-533/sp19/a3",
+  "src": [
+    "A3-hmm.ipynb"
+  ],
+  "tests": {
+      "tests/q*.py": "ok_test"
+  },
+  "protocols": [
+      "file_contents",
+      "grading",
+      "submit"
+  ]
+}

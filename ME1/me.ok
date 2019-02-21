@@ -1,0 +1,15 @@
+{
+  "name": "NLP S19 Midterm Exam",
+  "endpoint": "boisestate/cs4-533/sp19/me",
+  "src": [
+    "ME-nbayes.ipynb"
+  ],
+  "tests": {
+      "tests/q*.py": "ok_test"
+  },
+  "protocols": [
+      "file_contents",
+      "grading",
+      "submit"
+  ]
+}

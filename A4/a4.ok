@@ -1,0 +1,15 @@
+{
+  "name": "A4 Linguistics",
+  "endpoint": "boisestate/cs4-533/sp19/a4",
+  "src": [
+    "A4-linguistics.ipynb"
+  ],
+  "tests": {
+      "tests/q*.py": "ok_test"
+  },
+  "protocols": [
+      "file_contents",
+      "grading",
+      "submit"
+  ]
+}

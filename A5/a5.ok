@@ -1,0 +1,15 @@
+{
+  "name": "A5 Lexical Semantics",
+  "endpoint": "boisestate/cs4-533/sp19/a5",
+  "src": [
+    "A5-lexical-semantics.ipynb"
+  ],
+  "tests": {
+      "tests/q*.py": "ok_test"
+  },
+  "protocols": [
+      "file_contents",
+      "grading",
+      "submit"
+  ]
+}

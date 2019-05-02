@@ -1,33 +1,21 @@
 import pandas as pd
 import numpy as np
-from collections import Counter
+from collections import *
 import nltk
-from nltk.translate.bleu_score import sentence_bleu
+from nltk.tokenize import RegexpTokenizer
 from sklearn.metrics import accuracy_score
 from sklearn.linear_model import LogisticRegression
 from pymagnitude import *
+import time
+from scipy.spatial.distance import cosine
+import warnings
+warnings.filterwarnings('ignore')
 
 data = pd.read_csv('data/questions.csv')
+data = data
 path = 'data/GoogleNews-vectors-negative300.magnitude'
 vectors = Magnitude(path)
+tok = RegexpTokenizer('\w+')
+data.question1 = pd.Series([tok.tokenize(str(s).lower()) for s in data.question1])
+data.question2 = pd.Series([tok.tokenize(str(s).lower()) for s in data.question2])
 
-# helper functions
-def sum_vec(words):
-    return np.sum([vectors.query(w) for w in words if w in vectors], axis=0)
-
-data.vecs1 = pd.Series([sum_vec(words) for words in data.question1])
-data.vecs2 = pd.Series([sum_vec(words) for words in data.question2])
-
-#initial data information
-print("# of data points:", len(data))
-print("# of word vectors:", len(vectors))
-print('vector dimensions:', vectors.dim)
-cnt = Counter(data.is_duplicate)
-print("random baseline:", 1/len(cnt.keys()))
-print("most common baseline:", max([cnt[k]/sum(cnt.values()) for k in cnt.keys()]))
-
-#accuracy_score([0 if sentence_bleu(
-#                        [str(data.question1[i]).split()],
-#                        str(data.question2[i]).split()) 
-#                < .5 else 1
-#                for i in range(len(data))], data.is_duplicate)
